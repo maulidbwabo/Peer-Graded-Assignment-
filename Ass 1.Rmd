@@ -1,0 +1,65 @@
+---
+title: "Peer Graded Assignment"
+author: "Maulid Hussein Bwabo"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+install.packages("leaflet", repos = "http://cran.South Africa.r-project.org")
+library(leaflet)
+```
+
+```{r}
+my_map1 <- leaflet() %>%
+  addTiles() %>%  
+  addMarkers(lng= 37.33906, lat=-3.35387, popup="Union Cafe")
+my_map1
+```
+
+```{r}
+#set bound
+my_map1 %>% fitBounds(0, 40, 10, 50)
+```
+
+```{r}
+#Zoom (Union CAFE) 
+my_map1 <- my_map1 %>% setView(37.33906,-3.35387, zoom = 17)
+my_map1
+```
+
+```{r}
+#automatic bounds derived from lng/lat data
+my_map1 <- my_map1 %>% clearBounds()
+my_map1
+```
+
+```{r}
+##Add marker
+addMarkers(
+  my_map1,
+  lng = 37.33906,
+  lat = -3.35387,
+  layerId = NULL,
+  group = NULL,
+  icon = NULL,
+  popup = NULL,
+  popupOptions = NULL,
+  label = NULL,
+  labelOptions = NULL,
+  options = markerOptions(),
+  clusterOptions = NULL,
+  clusterId = NULL,
+  data = getMapData(my_map1)
+)
+```
+
+
+
